@@ -50,7 +50,6 @@ public class LoadArticleServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Get");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
@@ -65,7 +64,6 @@ public class LoadArticleServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Post");
 		String action = request.getParameter("action");
 		session = request.getSession();
 		// load first page of list to display.
