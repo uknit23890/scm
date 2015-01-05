@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import com.bean.Article;
 
 /**
- * Servlet implementation class CrudServlet
+ * Servlet implementation class AddArticleServlet
  * 
  * @author Vinay Singh Rawat
  */
@@ -26,8 +26,10 @@ public class AddArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * It will be called on page load
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 *      respons)
+	 *      
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -80,7 +82,6 @@ public class AddArticleServlet extends HttpServlet {
 
 	/**
 	 * This method is to save article in database
-	 * 
 	 * @param title
 	 * @param content
 	 * @return boolean
