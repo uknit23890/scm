@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.Paper" table="PAPER">
+		<id name="id" type="long" access="field">
+			<column name="PID" />
+			<generator class="increment" />
+		</id>
+		<property name="paperName" type="java.lang.String">
+			<column name="PAPERNAME" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" length="5000" />
+		</property>
+		<!-- We have define a SET "private Set<Question> questions" of question 
+			in Paper bean -->
+		<!-- Which says a paper Object will have these sets of questions -->
+		<!--** cascade="all" is mandatory it require to update the question with 
+			it forieng key PID -->
+		<set name="questions" table="questions" cascade="all">
+			<key>
+				<column name="PID" />
+			</key>
+			<one-to-many class="com.bean.Question" />
+		</set>
+	</class>
+	<class name="com.bean.Question" table="QUESTIONS">
+		<id name="id" type="long" access="field">
+			<column name="QID" />
+			<generator class="increment" />
+		</id>
+		<property name="question" type="java.lang.String">
+			<column name="QUESTION" length="5000" />
+		</property>
+		<property name="answer" type="java.lang.String">
+			<column name="ANSWER" length="5000" />
+		</property>
+	</class>
+
+</hibernate-mapping>
