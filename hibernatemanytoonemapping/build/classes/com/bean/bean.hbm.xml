@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.Person" table="PERSON">
+		<id name="id" type="int" access="field">
+			<column name="PID" />
+			<generator class="increment" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<!-- MANY PERSONS HAVE SAME ADDRESS OBJECT. By using cascade=all option 
+			the address address will be automatically saved when person objects will 
+			persist. PERSON_ADDRESS column is a FK here mapped with PK(AID) of Address -->
+		<many-to-one name="address" class="com.bean.Address"
+			column="PERSON_ADDRESS" cascade="all" not-null="true" />
+	</class>
+	<class name="com.bean.Address" table="ADDRESS">
+		<id name="id" type="int" access="field">
+			<column name="AID" />
+			<generator class="increment" />
+		</id>
+		<property name="city" type="java.lang.String">
+			<column name="CITY" />
+		</property>
+		<property name="street" type="java.lang.String">
+			<column name="STREET" />
+		</property>
+		<property name="zipCode" type="java.lang.String">
+			<column name="ZIPCODE" />
+		</property>
+	</class>
+
+</hibernate-mapping>
