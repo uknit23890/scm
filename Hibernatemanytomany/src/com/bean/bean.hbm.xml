@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.Employee" table="EMPLOYEE">
+		<id name="id" type="int" access="field">
+			<column name="EID" />
+			<generator class="increment" />
+		</id>
+		<property name="firstName" type="java.lang.String">
+			<column name="FIRSTNAME" />
+		</property>
+		<property name="lastName" type="java.lang.String">
+			<column name="LASTNAME" />
+		</property>
+		<!-- emp_id and role_id are foriegn key in emp_role table which refers 
+			to RID and EID respectively. EMP_ROLE table make the relation between EMPLOYEE 
+			and their ROLES -->
+		<set name="roles" cascade="all" table="EMP_ROLE">
+			<key column="emp_id" />
+			<many-to-many column="role_id" class="com.bean.Role" />
+		</set>
+	</class>
+	<class name="com.bean.Role" table="ROLE">
+		<id name="id" type="int" access="field">
+			<column name="RID" />
+			<generator class="increment" />
+		</id>
+		<property name="roleName" type="java.lang.String">
+			<column name="ROLENAME" />
+		</property>
+	</class>
+</hibernate-mapping>
