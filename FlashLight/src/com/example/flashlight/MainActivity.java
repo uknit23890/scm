@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity { 
 	private ImageButton imgButton;
 	private boolean isFlag = false;
 	Camera camera;
